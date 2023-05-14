@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -27,5 +28,22 @@ public class MemberServiceImpl implements MemberService {
     public boolean existsEmail(String email) {
         Objects.requireNonNull(email);
         return memberRepository.existsMembersByEmail(email);
+    }
+
+    @Override
+    public boolean existsEmailAndPassword(String email, String password) {
+        Objects.requireNonNull(email, password);
+        return memberRepository.existsMembersByEmailAndPassword(email, password);
+    }
+
+    @Override
+    public Optional<Member> findById(Long id) {
+        return memberRepository.findByIdAndDeletedFalse(id);
+    }
+
+    @Override
+    public void update(Member member) {
+        member.setUpdateTime(LocalDateTime.now());
+        memberRepository.save(member);
     }
 }

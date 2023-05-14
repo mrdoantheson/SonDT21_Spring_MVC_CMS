@@ -22,35 +22,33 @@
             <h2 class="p-3 border-bottom" style="margin-bottom: 0.5em">Edit profile</h2>
             <div class="border">
                 <p class="p-3 border-bottom bg-light" style="margin-bottom: 0">Profile Form Elements</p>
-                <form class="p-3" method="post" action="">
-                    <input type="hidden" name="id" value="">
+                <form class="p-3" method="post" th:action="${'/cms/edit-profile/' + memberFromDto.getId()}" th:object="${memberFromDto}">
                     <div class="pb-3">
                         <label for="first-name" class="form-label fw-bold">First name</label>
                         <input type="text" class="form-control" id="first-name" name="first-name"
                                placeholder="Enter the first name"
-                               size="50" value="">
+                               size="50" th:field="*{firstName}">
                     </div>
                     <div class="pb-2">
                         <label for="last-name" class="form-label fw-bold">Last name</label>
                         <input type="text" class="form-control" id="last-name" name="last-name"
                                placeholder="Enter the last name"
-                               size="50" value="">
+                               size="50" th:field="*{lastName}">
                     </div>
                     <div class="pb-2">
                         <label for="staticEmail" class="col-sm-2 fw-bold" style="margin-top: 0.5em">Email</label>
                         <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                               value="" size="50">
+                               value="" size="50" th:field="*{email}">
                     </div>
                     <div class="pb-2">
                         <label for="phone" class="form-label fw-bold">Phone</label>
                         <input type="text" class="form-control" id="phone" name="phone"
-                               placeholder="Enter your phone number"
-                               value="">
+                               placeholder="Enter your phone number" th:field="*{phone}">
                     </div>
                     <div class="pb-3">
                         <label for="description" class="form-label fw-bold">Description</label>
                         <textarea class="form-control" id="description" rows="4"
-                                  value=""></textarea>
+                                  th:field="*{description}"></textarea>
                     </div>
                     <div class="pb-2">
                         <button type="submit" class="border border-dark-subtle rounded px-2 bg-white">Submit Button

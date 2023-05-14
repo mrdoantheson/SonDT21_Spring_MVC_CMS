@@ -16,15 +16,18 @@
 <div class="container col-md-4" style="margin-top: 10rem">
     <div class="border rounded">
         <p class="p-3 border-bottom bg-light" style="margin-bottom: 0">Please Sign In</p>
-        <form method="POST" class="p-3 bg-white" action="" id="login-form">
+        <form method="POST" class="p-3 bg-white" th:action="${'/login'}" th:object="${memberLoginDto}" id="login-form">
             <fieldset class="pb-3">
                 <div class="form-group pb-3">
                     <input type="email" class="form-control" id="email" placeholder="E-mail" size="50"
-                           required>
+                           th:field="*{email}" required>
+                    <span th:if="${#fields.hasErrors('global')}">
+                    <span th:each="errorMessage : ${#fields.errors('global')}" th:text="${errorMessage}" class="text-danger"></span>
+                </span>
                 </div>
                 <div class="form-group pb-3">
                     <input type="password" class="form-control" id="password" placeholder="Password"
-                           size="50" required>
+                           th:field="*{password}" size="50" required>
                 </div>
                 <div class="form-check pb-3">
                     <input type="checkbox" class="form-check-input" id="remember-me" placeholder="Password" size="50">

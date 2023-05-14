@@ -18,6 +18,7 @@ public class Content extends AbstractAuthenticationEntity {
     @Column(length = 1000, nullable = false)
     private String content;
     private String sort;
+    private boolean deleted;
     @ManyToOne
     @JoinColumn(name = "AuthorId")
     private Member member;

@@ -3,10 +3,12 @@ package fa.traning.sondt21_spring_mvc_cms.service.Impl;
 import fa.traning.sondt21_spring_mvc_cms.model.entity.Content;
 import fa.traning.sondt21_spring_mvc_cms.repository.ContentRepository;
 import fa.traning.sondt21_spring_mvc_cms.service.ContentService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class ContentServiceImpl implements ContentService {
@@ -17,8 +19,8 @@ public class ContentServiceImpl implements ContentService {
     }
 
     @Override
-    public List<Content> findAllContent() {
-        return (List<Content>) contentRepository.findAll();
+    public Page<Content> findAllPaging(Specification<Content> specification, Pageable pageable) {
+        return contentRepository.findAll(specification, pageable);
     }
 
     @Override

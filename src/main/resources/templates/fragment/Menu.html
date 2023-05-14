@@ -1,11 +1,11 @@
 <div class="col-lg-2 bg-light vh-100">
-  <div class="input-group pt-3 pb-3 border-bottom">
+  <form method="get" class="input-group pt-3 pb-3 border-bottom" th:href="@{'/cms/view-content?q='}">
     <input type="text" class="form-control" placeholder="Searching..." aria-label="Searching"
-           aria-describedby="button-addon2">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i
+           aria-describedby="button-addon2" name="q">
+    <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i
             class="fas fa-search"></i>
     </button>
-  </div>
+  </form>
   <div id="view-contents" class="mb-3 my-3 border-bottom pb-2">
     <a th:href="@{'/cms/view-content'}" class="text-decoration-none ">
       <i class="fas fa-calendar-alt"></i> View contents
