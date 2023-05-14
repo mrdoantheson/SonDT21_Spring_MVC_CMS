@@ -37,7 +37,8 @@ public class SecurityConfiguration {
                 .disable()
                 .addFilterBefore(corsFilter(), UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(request -> request.requestMatchers("/api/login", "api/cms/**").permitAll()
+                .authorizeHttpRequests(request -> request.requestMatchers(
+                        "/api/login", "api/cms/**","api/cms/view-content/**").permitAll()
                         .anyRequest().authenticated()
                 ).httpBasic().and().apply(new JwtFilterConfiguration(tokenProvider));
         return httpSecurity.build();

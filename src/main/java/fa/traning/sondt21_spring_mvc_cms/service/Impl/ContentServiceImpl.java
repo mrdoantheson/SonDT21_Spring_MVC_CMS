@@ -9,6 +9,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class ContentServiceImpl implements ContentService {
@@ -26,6 +27,24 @@ public class ContentServiceImpl implements ContentService {
     @Override
     public void create(Content content) {
         content.setCreateDate(LocalDateTime.now());
+        content.setUpdateTime(LocalDateTime.now());
+        contentRepository.save(content);
+    }
+
+    @Override
+    public Optional<Content> findById(Long id) {
+        return contentRepository.findByIdAndDeletedFalse(id);
+    }
+
+    @Override
+    public void delete(Content content) {
+        content.setDeleted(true);
+        content.setUpdateTime(LocalDateTime.now());
+        contentRepository.save(content);
+    }
+
+    @Override
+    public void update(Content content) {
         content.setUpdateTime(LocalDateTime.now());
         contentRepository.save(content);
     }

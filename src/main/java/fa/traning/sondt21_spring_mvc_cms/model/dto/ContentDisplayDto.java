@@ -1,15 +1,16 @@
 package fa.traning.sondt21_spring_mvc_cms.model.dto;
 
-import fa.traning.sondt21_spring_mvc_cms.model.entity.Member;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter
 @Setter
-public class ContentFromDto {
+@Getter
+public class ContentDisplayDto {
+    private Integer id;
     private String title;
     private String brief;
     private String content;
+    private LocalDateTime createDate;
 }

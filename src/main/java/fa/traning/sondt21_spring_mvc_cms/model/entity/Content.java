@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Setter
 @Getter
@@ -11,7 +13,7 @@ public class Content extends AbstractAuthenticationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(length = 50, nullable = false)
+    @Column(nullable = false)
     private String title;
     @Column(length = 500, nullable = false)
     private String brief;
